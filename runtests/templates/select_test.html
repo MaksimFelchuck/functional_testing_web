@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+{% block content %}
+    <div class="container">
+    <div class="d-flex p-2">
+        <ul class="list-group">
+        <h3>Select test: </h3>
+                {% for test in tests.keys %}
+                    <li class="list-group-item"><a class="p-2 text-dark" href="{{ test }}">{{ test }}</a></li>
+                {% endfor %}
+        </ul>
+    </div>
+    </div>
+
+
+{% endblock %}

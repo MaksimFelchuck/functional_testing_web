@@ -1,0 +1,21 @@
+{% extends "select_test.html" %}
+{% block content %}
+    <div class="container">
+        <h3>Test's output: </h3>
+        {% if test_name == 'check_link' %}
+            <p class="text-justify">follow up on testing...</p>
+        {% endif %}
+        {% for out in stdout %}
+        <p class="text-justify"> {{ out }} </p>
+        {% endfor %}
+        {% for err in stderr %}
+        <p class="text-justify"> {{ err }} </p>
+        {% endfor %}
+        {% if test_name == "run_all_tests" %}
+        <a class="btn btn-dark" href="/fulltest/" role="button">Back to test</a>
+        {% else %}
+        <a class="btn btn-dark" href="/tests" role="button">Back to select</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

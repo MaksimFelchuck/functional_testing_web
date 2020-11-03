@@ -1,0 +1,25 @@
+{% extends "select_test.html" %}
+{% block content %}
+    <div class="container">
+
+            <h3>{{ test_name }}</h3>
+            {% if test_name == 'check_link' %}
+                <p class="text-justify">if you want to enter several parameters, enter with "," and without spaces</p>
+            {% endif %}
+            {% if test_name == "run_all_tests" %}<form action="/fulltest/" method="post" >
+            {% else %}
+                <form action="{{ test_name }}" method="post" >
+            {% endif %}
+            {% csrf_token %}
+                    {% for item in form %}
+                        <div class="form-group">
+                        <label for="{{ item.label }}">{{ item.label }}:</label><br>
+                        {{ item }}
+                        </div>
+                    {% endfor %}
+            <input type="submit" value="Run test" class="btn btn-dark">
+            </form>
+        </div>
+
+
+{% endblock %}
